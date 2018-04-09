@@ -43,8 +43,9 @@ var msbConfig = {
   buttonModalId: 'modalShareButton'
 };
 ```
+
 Too see an concrete example, please see the `index.html` at the root of this repository.
----
+
 And its create all elements itself.
 
 # Attention

@@ -4,23 +4,22 @@
     return typeof InstallTrigger !== 'undefined';
   }
 
+  function msbOpenModal() {
+    if (msbConfig && msbConfig.openModal && msbConfig.addressFieldId) {
+      msbConfig.openModal();
+    }
+  }
+
+  function msbCloseModal() {
+    if (msbConfig && msbConfig.closeModal) {
+      msbConfig.closeModal();
+    }
+  }
+
   var buttons = document.getElementsByClassName('mastodon-share-button');
   
-  console.log('test')
   for(var i = 0; i < buttons.length ; i++) {
     (function(j) {
-
-      function msbOpenModal() {
-        if (msbConfig && msbConfig.openModal && msbConfig.addressFieldId) {
-          msbConfig.openModal();
-        }
-      }
-
-      function msbCloseModal() {
-        if (msbConfig && msbConfig.closeModal) {
-          msbConfig.closeModal();
-        }
-      }
 
       var target = buttons[j].dataset.target;
       var name = buttons[j].dataset.name;
@@ -37,9 +36,8 @@
       buttons[j].appendChild(button);
   
       button.addEventListener('click', function () {
-        var windowId = null;
         if (isFirefox()) {
-          windowId = window.open('web+mastodon://share?text=' + name + '%20' + target, '__blank');
+          var windowId = window.open('web+mastodon://share?text=' + name + '%20' + target, '__blank');
           if (!windowId) {
             mbsOpenModal();
           }
