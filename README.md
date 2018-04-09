@@ -24,6 +24,27 @@ For example:
 * **data-name**: A little resume of your link
 * **data-buttonstyle**: to add some style to the button, it muste be a class like `btn` on Bootstrap.
 
+## Adapt Mastodon Share Button to your design
+
+To open a homogenious modal, get the instance's address field [etc], you need to put a variable with your preferences.
+This variable contains callback to open and close modal and/or dialog, the id of the button to share and close modal.
+
+Example:
+
+```javascript
+var msbConfig = {
+  openModal: function () {
+    $('#exampleModal').modal('show');
+  },
+  closeModal: function () {
+    $('#exampleModal').modal('hide');
+  },
+  addressFieldId: 'mbs-address',
+  buttonModalId: 'modalShareButton'
+};
+```
+Too see an concrete example, please see the `index.html` at the root of this repository.
+---
 And its create all elements itself.
 
 # Attention
