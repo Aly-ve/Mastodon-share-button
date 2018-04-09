@@ -24,7 +24,7 @@ For example:
 * **data-name**: A little resume of your link
 * **data-buttonstyle**: to add some style to the button, it muste be a class like `btn` on Bootstrap.
 
-End its create all elements itself.
+And its create all elements itself.
 
 # Attention
 For now, it's working only for Firefox.
