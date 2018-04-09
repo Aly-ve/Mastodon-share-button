@@ -7,6 +7,8 @@
   <meta name="description" content="Mastodon button demo">
   <meta name="author" content="Alyve">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -30,7 +32,47 @@
       </div>
     </div>
   </div>
-  <script src="mastodon.js"></script>
 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Instance address</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="mbs-address">Enter your instance's address</label>
+              <input type="text" class="form-control" id="mbs-address" placeholder="https://framapiaf.org">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="mbs-memorize-instance">
+              <label class="form-check-label" for="mbs-memorize-instance">Memorize my instance</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="modalShareButton" type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    var msbConfig = {
+      openModal: function () {
+        $('#exampleModal').modal('show');
+      },
+      closeModal: function () {
+        $('#exampleModal').modal('hide');
+      },
+      addressFieldId: 'mbs-address',
+      buttonModalId: 'modalShareButton'
+    };
+  </script>
+
+  <script src="mastodon.min.js"></script>
 </body>
 </html>
