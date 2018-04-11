@@ -48,6 +48,5 @@ Too see an concrete example, please see the `index.html` at the root of this rep
 
 And its create all elements itself.
 
-# Attention
-For now, it's working only for Firefox.
-Others browsers will be supported as soon as possible.
+## Be careful
+Still on development.
