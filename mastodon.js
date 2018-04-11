@@ -16,33 +16,71 @@
     }
   }
 
-  var buttons = document.getElementsByClassName('mastodon-share-button');
+  function msbSetCookie(name, value, days) {
+    var d = new Date();
+    d.setTime(d.getTime() + days*86400000);
+    var expires = 'expires=' + d.toUTCString();
+    document.cookie = name + '=' + value + '; ' + expires + '; path=/'
+  }
+
+  function msbGetCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+  function msbDeleteCookie() {
+    document.cookie = "";
+  }
   
-  for(var i = 0; i < buttons.length ; i++) {
+  var COOKIE_NAME = 'instance-address';
+  var msbButtons = document.getElementsByClassName('mastodon-share-button');
+  
+  for(var i = 0; i < msbButtons.length ; i++) {
     (function(j) {
 
-      var target = buttons[j].dataset.target;
-      var name = buttons[j].dataset.name;
-      var buttonStyle = buttons[j].dataset.buttonstyle;
-      var callbackOpenModel = buttons[j].dataset.open;
+      var msbTarget = msbButtons[j].dataset.target;
+      var name = msbButtons[j].dataset.name;
+      var msbButtonStyle = msbButtons[j].dataset.buttonstyle;
       
       var button = document.createElement('button');
 
-      if (buttonStyle)
-        button.setAttribute('class', buttonStyle)
+      if (msbButtonStyle) {
+        button.setAttribute('class', msbButtonStyle)
+      }
 
       var buttonText = document.createTextNode('Toot');
       button.appendChild(buttonText);
-      buttons[j].appendChild(button);
+      msbButtons[j].appendChild(button);
   
       button.addEventListener('click', function () {
+        var instanceAddress = null;
         if (isFirefox()) {
-          var windowId = window.open('web+mastodon://share?text=' + name + '%20' + target, '__blank');
+          var windowId = window.open('web+mastodon://share?text=' + name + '%20' + msbTarget, '__blank');
           if (!windowId) {
-            mbsOpenModal();
+            instanceAddress = msbGetCookie(COOKIE_NAME);
+            if (instanceAddress) {
+              window.open(instanceAddress + '/share?text=' + name + '%20' + msbTarget, '__blank');
+            } else {
+              mbsOpenModal();
+            }
           }
         } else {
-          msbOpenModal();
+          instanceAddress = msbGetCookie(COOKIE_NAME);
+          if (instanceAddress) {
+            window.open(instanceAddress + '/share?text=' + name + '%20' + msbTarget, '__blank');
+          } else {
+            msbOpenModal();
+          }
         }
       }, false)
 
@@ -52,10 +90,13 @@
 
           /**
            * @Todo: verify the url with a regular expression
-           * @Todo: add cookies management to save address instance
            */
           if (msbInstanceAddress && msbInstanceAddress.length > 0) {
-            window.open(msbInstanceAddress + '/share?text=' + name + '%20' + target, '__blank');
+            var msbMemorizeIsChecked = document.getElementById(msbConfig.memorizeFieldId).checked;
+            if (msbConfig.memorizeFieldId && !msbGetCookie(COOKIE_NAME) && msbMemorizeIsChecked) {
+              msbSetCookie(COOKIE_NAME, msbInstanceAddress, 7);
+            }
+            window.open(msbInstanceAddress + '/share?text=' + name + '%20' + msbTarget, '__blank');
             msbCloseModal()
           }
         }, false);

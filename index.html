@@ -44,17 +44,17 @@
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="mbs-address">Enter your instance's address</label>
-              <input type="text" class="form-control" id="mbs-address" placeholder="https://framapiaf.org">
+              <label for="msb-address">Enter your instance's address</label>
+              <input type="text" class="form-control" id="msb-address" placeholder="https://framapiaf.org">
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="mbs-memorize-instance">
-              <label class="form-check-label" for="mbs-memorize-instance">Memorize my instance</label>
+              <input type="checkbox" class="form-check-input" id="msb-memorize-instance">
+              <label class="form-check-label" for="msb-memorize-instance">Memorize my instance</label>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="modalShareButton" type="button" class="btn btn-primary">Save changes</button>
+            <button id="msb-share" type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -68,11 +68,12 @@
       closeModal: function () {
         $('#exampleModal').modal('hide');
       },
-      addressFieldId: 'mbs-address',
-      buttonModalId: 'modalShareButton'
+      addressFieldId: 'msb-address',
+      buttonModalId: 'msb-share',
+      memorizeFieldId: 'msb-memorize-instance'
     };
   </script>
 
-  <script src="mastodon.min.js"></script>
+  <script src="mastodon.js"></script>
 </body>
 </html>
