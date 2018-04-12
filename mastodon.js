@@ -36,13 +36,14 @@
         }
     }
     return "";
-}
+  }
 
   function msbDeleteCookie() {
     document.cookie = "";
   }
   
   var COOKIE_NAME = 'instance-address';
+  var URL_REGEX = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/;
   var msbButtons = document.getElementsByClassName('mastodon-share-button');
   
   for(var i = 0; i < msbButtons.length ; i++) {
@@ -87,17 +88,15 @@
       if (msbConfig && msbConfig.addressFieldId && msbConfig.buttonModalId) {
         document.getElementById(msbConfig.buttonModalId).addEventListener('click', function () {
           var msbInstanceAddress = document.getElementById(msbConfig.addressFieldId).value;
-
-          /**
-           * @Todo: verify the url with a regular expression
-           */
-          if (msbInstanceAddress && msbInstanceAddress.length > 0) {
-            var msbMemorizeIsChecked = document.getElementById(msbConfig.memorizeFieldId).checked;
-            if (msbConfig.memorizeFieldId && !msbGetCookie(COOKIE_NAME) && msbMemorizeIsChecked) {
-              msbSetCookie(COOKIE_NAME, msbInstanceAddress, 7);
+          if (msbInstanceAddress.match(URL_REGEX).length > 0) {
+            if (msbInstanceAddress && msbInstanceAddress.length > 0) {
+              var msbMemorizeIsChecked = document.getElementById(msbConfig.memorizeFieldId).checked;
+              if (msbConfig.memorizeFieldId && !msbGetCookie(COOKIE_NAME) && msbMemorizeIsChecked) {
+                msbSetCookie(COOKIE_NAME, msbInstanceAddress, 7);
+              }
+              window.open(msbInstanceAddress + '/share?text=' + name + '%20' + msbTarget, '__blank');
+              msbCloseModal()
             }
-            window.open(msbInstanceAddress + '/share?text=' + name + '%20' + msbTarget, '__blank');
-            msbCloseModal()
           }
         }, false);
       }
