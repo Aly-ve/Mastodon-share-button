@@ -53,7 +53,7 @@ var msbConfig = {
 
 Too see an concrete example, please see the `demo/index.html` at the root of this repository.
 
-And its create all elements itself.
+And it creates all elements by itself.
 
 ## Be careful
-MSB works fine but don't forget it still on development.
+MSB works fine but don't forget it is still under development.
