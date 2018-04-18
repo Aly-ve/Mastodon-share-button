@@ -18,11 +18,11 @@ For example:
 ></div>
 ```
 
-## Some explications
+## Some explanations
 
 * **data-target**: this is the URL which will be shared on Mastodon
-* **data-name**: Text to introduice the URL in your toot
-* **data-buttonstyle**: buttonstyle is the class which added to the button as a DOM property
+* **data-name**: Text to introduce the URL in your toot
+* **data-buttonstyle**: buttonstyle is the class which is added to the button as a DOM property
 
 ## Adapt Mastodon Share Button to your design
 
@@ -53,7 +53,7 @@ var msbConfig = {
 
 Too see an concrete example, please see the `demo/index.html` at the root of this repository.
 
-And its create all elements itself.
+And it creates all elements by itself.
 
 ## Be careful
-MSB works fine but don't forget it still on development.
+MSB works fine but don't forget it is still under development.
