@@ -18,11 +18,11 @@ For example:
 ></div>
 ```
 
-## Some explications
+## Some explanations
 
 * **data-target**: this is the URL which will be shared on Mastodon
-* **data-name**: Text to introduice the URL in your toot
-* **data-buttonstyle**: buttonstyle is the class which added to the button as a DOM property
+* **data-name**: Text to introduce the URL in your toot
+* **data-buttonstyle**: buttonstyle is the class which is added to the button as a DOM property
 
 ## Adapt Mastodon Share Button to your design
 
