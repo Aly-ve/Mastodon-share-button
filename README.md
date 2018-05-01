@@ -15,6 +15,7 @@ For example:
   data-target="https://framapiaf.org"
   data-name="Framapiaf"
   data-buttonstyle="btn btn-secondary"
+  data-text="Share on Mastodon"
 ></div>
 ```
 
@@ -23,6 +24,7 @@ For example:
 * **data-target**: this is the URL which will be shared on Mastodon
 * **data-name**: Text to introduce the URL in your toot
 * **data-buttonstyle**: buttonstyle is the class which is added to the button as a DOM property
+* **data-text**: *(Optional)* Override default text for the button. If `data-text` does not exist, the default "Toot" button will be displayed.
 
 ## Adapt Mastodon Share Button to your design
 

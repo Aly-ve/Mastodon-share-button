@@ -62,12 +62,13 @@ function msbSetCookie(name, value, days) {
       let msbTarget = msbButtons[j].dataset.target
       let msbName = msbButtons[j].dataset.name
       let msbButtonStyle = msbButtons[j].dataset.buttonstyle
+      let msbText = msbButtons[j].dataset.text
 
       /**
        * Create buttons
        */
       let button = document.createElement('button')
-      let buttonText = document.createTextNode('Toot')
+      let buttonText = !!msbText ? document.createTextNode(msbText) : document.createTextNode(msbI18n())
 
       if (msbButtonStyle) {
         button.setAttribute('class', msbButtonStyle)
@@ -107,3 +108,47 @@ function msbSetCookie(name, value, days) {
   }
 
 })()
+
+function msbI18n() {
+  let language = navigator.language || navigator.userLanguage
+  let publish = {
+    'ar': 'بوّق',
+    'bg': 'Раздумай',
+    'de': 'Tröt',
+    'eo': 'Hué',
+    'es': 'Tootear',
+    'fa': 'بوق',
+    'fi': 'Tuuttaa',
+    'fr': 'Pouet',
+    'gl': 'ללחוש',
+    'he': 'ללחוש',
+    'hu': 'Tülk',
+    'hy': 'Թթել',
+    'io': 'Siflar',
+    'ja': 'トゥート',
+    'ko': '툿',
+    'no': 'Tut',
+    'oc': 'Tut',
+    'pl': 'Wyślij',
+    'pt-BR': 'Publicar',
+    'pt': 'Publicar',
+    'ru': 'Трубить',
+    'sr-Latn': 'Tutni',
+    'sr': 'Тутни',
+    'uk': 'Дмухнути',
+    'zh-CN': '嘟嘟',
+    'zh-HK': '發文',
+    'zh-TW': '貼掉',
+    'default': 'Toot'
+  }
+
+  let text = null
+  try {
+    text = publish[language]
+  }
+  catch (error) {
+    text = publish.default
+  }
+
+  return text
+}
