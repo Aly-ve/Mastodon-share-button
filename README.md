@@ -58,7 +58,7 @@ var msbConfig = {
 * buttonDisplayText: *(optional)* By default, a text is displayed. If you put `buttonDisplayText` to `false`, only your icon (if setted) will be displayed.
 * buttonIconHtml: Contains HTML tags to append an icon (like Fork-Awesome's Mastodon icon)
 
-Too see an concrete example, please see the `demo/index.html` at the root of this repository.
+Too see an concrete example, please see the [Github Pages](https://aly-ve.github.io/Mastodon-share-button/) at the root of this repository.
 
 And it creates all elements by itself.
 
