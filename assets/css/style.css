@@ -1,0 +1,15 @@
+.navbar {
+  border-radius: 0px;
+}
+
+.jumbotron {
+  background: url('../img/elephant.svg') bottom left no-repeat;
+  background-color: #1f232b !important;
+  text-align: right;
+  color: #F5F5F5;
+  border-radius: 0px !important;
+}
+
+.margin-top {
+  margin-top: 2em;
+}

@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mastodon Share Button</title>
+  <meta name="description" content="Mastodon button demo">
+  <meta name="author" content="Alyve">
+  <meta property="og:title" content="Mastodon Share Button"/>
+
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/fork-awesome.min.css"/>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <script src="assets/js/jquery-3.2.1.slim.min.js" ></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1"><i class="fa fa-mastodon" aria-hidden="true"></i> Mastodon Share Button</span>
+    </div>
+  </nav>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Mastodon Share Button</h1>
+      <p class="lead">A little library to add buttons for sharing a web page on Mastodon</p>
+      <p>Works on modern browser.</p>
+      <!-- <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </p> -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <div class="card">
+          <img class="card-img-top" src="assets/img/1.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Test it!</h5>
+            <p class="card-text">
+              Bellow this card, you can click on the button. Its behavior depends on your browser.
+              <ul>
+                <li>On Firefox, it opens a new tab with Mastodon application.</li>
+                <li>Otherwise, a little modal will be displayed to ask to the user his/her instance.</li>
+              </ul>
+            </p>
+            <p class="card-text">
+              <div 
+              class="mastodon-share-button"
+              data-target="https://framapiaf.org"
+              data-name="Test of #MSB"
+              data-buttonstyle="btn btn-primary"
+              data-text="Share on Mastodon"
+              ></div>   
+            </p>
+          </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <h2>Easy to use</h2>
+      <p>It's so simple than my grandmother is able to add these buttons.<br/>
+      <p>Just include mastodon.js, set the configuration and add your button.</p>
+
+
+      <h2>Keep the liberty</h2>
+      <p>Mastodon Share Button is very customizable. Keep your freedom by customizing the text, the button or adding a button.<br/>
+      It works without any library. No tracker included, just a button.
+
+    </div>
+</div>
+    
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Instance address</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="msb-address">Enter your instance's address</label>
+              <input type="text" class="form-control" id="msb-address" placeholder="https://framapiaf.org">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="msb-memorize-instance">
+              <label class="form-check-label" for="msb-memorize-instance">Memorize my instance</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="msb-share" type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    var msbConfig = {
+      openModal: function () {
+        $('#exampleModal').modal('show');
+      },
+      closeModal: function () {
+        $('#exampleModal').modal('hide');
+      },
+      addressFieldId: 'msb-address',
+      buttonModalId: 'msb-share',
+      memorizeFieldId: 'msb-memorize-instance',
+      buttonIconHtml: '<i class="fa fa-mastodon" aria-hidden="true"></i>'
+    };
+  </script>
+
+  <script src="../dist/mastodon.js"></script>
+</body>
+</html>
