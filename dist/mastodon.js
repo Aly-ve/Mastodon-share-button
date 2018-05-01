@@ -68,14 +68,32 @@ function msbSetCookie(name, value, days) {
        * Create buttons
        */
       let button = document.createElement('button')
-      let buttonText = !!msbText ? document.createTextNode(msbText) : document.createTextNode(msbI18n())
+      let buttonText = null
 
+      /**
+       * Add text button... or not
+       */
+      if (msbConfig && (msbConfig.buttonDisplayText || msbConfig.buttonDisplayText === undefined)) {
+        buttonText = !!msbText ? document.createTextNode(msbText) : document.createTextNode(msbI18n())
+      }
+      else {
+        buttonText = document.createTextNode('')
+      }
+
+      
       if (msbButtonStyle) {
         button.setAttribute('class', msbButtonStyle)
       }
-
+      
       button.appendChild(buttonText)
       msbButtons[j].appendChild(button)
+      
+      /**
+       * Add icon to the button if buttonIconHtml is setted
+       */
+      if (msbConfig && msbConfig.buttonIconHtml) {
+        button.innerHTML = `${msbConfig.buttonIconHtml} ${button.innerHTML}`
+      }
 
       /**
        * Set the listener in each button

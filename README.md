@@ -42,7 +42,10 @@ var msbConfig = {
     $('#exampleModal').modal('hide');
   },
   addressFieldId: 'mbs-address',
-  buttonModalId: 'modalShareButton'
+  buttonModalId: 'modalShareButton',
+  buttonDisplayText: false, 
+  buttonIconHtml: '<i class="fa fa-mastodon" aria-hidden="true"></i>'
+
 };
 ```
 
@@ -52,6 +55,8 @@ var msbConfig = {
 * addressFieldId: The **id** of the model's input to complete the instance's link
 * buttonModalId: The **id** to open the new window and share your toot on Mastodon
 * memorizeFieldId: It's the **id** of the checkbox to create a cookie and save the instance on user's browser
+* buttonDisplayText: *(optional)* By default, a text is displayed. If you put `buttonDisplayText` to `false`, only your icon (if setted) will be displayed.
+* buttonIconHtml: Contains HTML tags to append an icon (like Fork-Awesome's Mastodon icon)
 
 Too see an concrete example, please see the `demo/index.html` at the root of this repository.
 
