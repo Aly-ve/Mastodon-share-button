@@ -64,6 +64,9 @@ function msbSetCookie(name, value, days) {
       let msbButtonStyle = msbButtons[j].dataset.buttonstyle
       let msbText = msbButtons[j].dataset.text
 
+      // Replace hashtab by html code
+      msbName = msbName.replace(/#/g, '%23')
+
       /**
        * Create buttons
        */
