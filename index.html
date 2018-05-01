@@ -3,16 +3,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Mastodon button demo</title>
+  <title>Mastodon Share Button</title>
   <meta name="description" content="Mastodon button demo">
   <meta name="author" content="Alyve">
   <meta property="og:title" content="Mastodon Share Button"/>
 
   <link rel="stylesheet" href="assets/css/style.css"/>
   <link rel="stylesheet" href="assets/css/fork-awesome.min.css"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <script src="assets/js/jquery-3.2.1.slim.min.js" ></script>
+  <script src="assets/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -23,53 +23,57 @@
     </div>
   </nav>
 
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Mastodon Share Button</h1>
+      <p class="lead">A little library to add buttons for sharing a web page on Mastodon</p>
+      <p>Works on modern browser.</p>
+      <!-- <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </p> -->
+    </div>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-6">
-        <h4>Share something by sending data...</h4>
-        <p>Mastodon Share Button is a little library to add buttons for sharing a web page on Mastodon.</br>
-          At your right, the button works by sending data to library button by button.
-          For example, there is the source code to describe a button with data:
-          <xmp>
-<div 
-class="mastodon-share-button"
-data-target="https://framapiaf.org"
-data-name="Framapiaf"
-data-buttonstyle="btn btn-primary"
-data-text="Share on Mastodon"
-></div>
-          </xmp>
-        </p>
-      </div>
-      <div class="col-6">
         <div class="card">
-          <img class="card-img-top" src="assets/img/2.jpg" alt="Card image cap">
+          <img class="card-img-top" src="assets/img/1.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Framapiaf.org</h5>
+            <h5 class="card-title">Test it!</h5>
             <p class="card-text">
-                Framapiaf est un service de microblog similaire à Twitter. Il est libre, décentralisé et fédéré. Il permet de courts messages (max. 500 caractères), de définir leur degré de confidentialité et de suivre les membres du réseau sans publicité ni pistage.
+              Bellow this card, you can click on the button. Its behavior depends on your browser.
+              <ul>
+                <li>On Firefox, it opens a new tab with Mastodon application.</li>
+                <li>Otherwise, a little modal will be displayed to ask to the user his/her instance.</li>
+              </ul>
             </p>
             <p class="card-text">
               <div 
-                class="mastodon-share-button"
-                data-target="https://framapiaf.org"
-                data-name="Framapiaf"
-                data-buttonstyle="btn btn-primary"
-                data-text="Share on Mastodon"
+              class="mastodon-share-button"
+              data-target="https://framapiaf.org"
+              data-name="Test of #MSB"
+              data-buttonstyle="btn btn-primary"
+              data-text="Share on Mastodon"
               ></div>   
             </p>
           </div>
-        </div>
       </div>
     </div>
-    
-    <div class="row margin-top">
-      <div class="col-6">
-        <h4>Or share a page without data using meta.</h4>
-      </div>
+    <div class="col-6">
+      <h2>Easy to use</h2>
+      <p>It's so simple than my grandmother is able to add these buttons.<br/>
+      <p>Just include mastodon.js, set the configuration and add your button.</p>
+
+
+      <h2>Keep the liberty</h2>
+      <p>Mastodon Share Button is very customizable. Keep your freedom by customizing the text, the button or adding a button.<br/>
+      It works without any library. No tracker included, just a button.
 
     </div>
-  </div>
+</div>
+
+    
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -108,11 +112,10 @@ data-text="Share on Mastodon"
       addressFieldId: 'msb-address',
       buttonModalId: 'msb-share',
       memorizeFieldId: 'msb-memorize-instance',
-      buttonDisplayText: false,
       buttonIconHtml: '<i class="fa fa-mastodon" aria-hidden="true"></i>'
     };
   </script>
 
-  <script src="../dist/mastodon.js"></script>
+  <script src="dist/mastodon.js"></script>
 </body>
 </html>
