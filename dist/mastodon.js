@@ -15,17 +15,45 @@ function msbShareButtonAction(name, target) {
     return
   }
   else {
-    msbInstanceAddress = msbGetCookie(name)
+    msbInstanceAddress = msbGetCookie('instance-address')
   }
 
   if (msbInstanceAddress.length > 0) {
     window.open(`${msbInstanceAddress}/share?text=${name}%20${target}`, `__blank`)
   }
   else {
-    if (msbConfig && msbConfig.openModal && msbConfig.addressFieldId && msbConfig.buttonModalId) {
-      let buttonModal = document.querySelector(`#${msbConfig.buttonModalId}`)
-      buttonModal.data = { target, name }
-      msbConfig.openModal()
+    if (msbConfig && msbConfig.openModal && msbConfig.addressFieldSelector) {
+      
+      if (document.querySelector(msbConfig.buttonModalSelector)) {
+        let bms = document.querySelector(msbConfig.buttonModalSelector)
+        bms.data = { target, name }
+        bms.addEventListener('click', () => msbOnShare(), false)  
+
+      }
+      msbConfig.openModal(name, target)
+    }
+  }
+}
+
+function msbOnShare(_name, _target) {
+  if (msbConfig && msbConfig.addressFieldSelector && msbConfig.buttonModalSelector) {
+
+    let name = !!_name ? _name : document.querySelector(msbConfig.buttonModalSelector).data.name
+    let target = !!_target ? _target : document.querySelector(msbConfig.buttonModalSelector).data.target
+    let msbInstanceAddress = document.querySelector(`${msbConfig.addressFieldSelector}`).value
+
+    if (msbInstanceAddress.match(URL_REGEX)) {
+      if (msbConfig.memorizeFieldId) {
+        let msbMemorizeIsChecked = document.querySelector(`#${msbConfig.memorizeFieldId}`).checked
+        if (msbConfig.memorizeFieldId && !msbGetCookie(COOKIE_NAME).length > 0 && msbMemorizeIsChecked) {
+          msbSetCookie(COOKIE_NAME, msbInstanceAddress, 7);
+        }
+      }
+
+      window.open(`${msbInstanceAddress}/share?text=${name}%20${target}`, `__blank`)
+      if (msbConfig && msbConfig.openModal && msbConfig.closeModal) {
+        msbConfig.closeModal()
+      }
     }
   }
 }
@@ -104,28 +132,6 @@ function msbSetCookie(name, value, days) {
       button.addEventListener('click', () => { msbShareButtonAction(msbName, msbTarget) }, true)
 
     })(i)
-  }
-
-  if (msbConfig && msbConfig.addressFieldId && msbConfig.buttonModalId) {
-    document.querySelector(`#${msbConfig.buttonModalId}`).addEventListener('click', (e) => {
-
-      let { name, target } = document.querySelector(`#${msbConfig.buttonModalId}`).data
-      let msbInstanceAddress = document.querySelector(`#${msbConfig.addressFieldId}`).value
-
-      if (!!msbInstanceAddress.match(URL_REGEX)) {
-        if (msbConfig.memorizeFieldId) {
-          let msbMemorizeIsChecked = document.querySelector(`#${msbConfig.memorizeFieldId}`).checked
-          if (msbConfig.memorizeFieldId && !msbGetCookie(COOKIE_NAME).length > 0 && msbMemorizeIsChecked) {
-            msbSetCookie(COOKIE_NAME, msbInstanceAddress, 7);
-          }
-        }
-
-        window.open(`${msbInstanceAddress}/share?text=${name}%20${target}`, `__blank`)
-        if (msbConfig && msbConfig.openModal) {
-          msbConfig.closeModal()
-        }
-      }
-    }, false)
   }
 
 })()
