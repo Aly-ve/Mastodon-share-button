@@ -144,6 +144,7 @@ function msbI18n() {
     'de': 'Tröt',
     'eo': 'Hué',
     'es': 'Tootear',
+    'eu': 'Tut',
     'fa': 'بوق',
     'fi': 'Tuuttaa',
     'fr': 'Pouet',
