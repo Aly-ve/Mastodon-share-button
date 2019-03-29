@@ -7,7 +7,6 @@ function msbShareButtonAction(name, target) {
   let msbInstanceAddress = ''
 
   msbInstanceAddress = msbGetCookie('instance-address')
-
   if (msbInstanceAddress.length > 0) {
     window.open(`${msbInstanceAddress}/share?text=${name}%20${target}`, `__blank`)
   }
@@ -134,6 +133,7 @@ function msbI18n() {
     'de': 'Tröt',
     'eo': 'Hué',
     'es': 'Tootear',
+    'eu': 'Tut',
     'fa': 'بوق',
     'fi': 'Tuuttaa',
     'fr': 'Pouet',
