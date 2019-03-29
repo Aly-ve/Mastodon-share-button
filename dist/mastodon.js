@@ -15,7 +15,7 @@ function msbShareButtonAction(name, target) {
     return
   }
   else {
-    msbInstanceAddress = msbGetCookie('instance-address')
+    msbInstanceAddress = msbGetCookie(COOKIE_NAME)
   }
 
   if (msbInstanceAddress.length > 0) {
