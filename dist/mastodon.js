@@ -1,23 +1,12 @@
 "use strict";
 
-const isFirefox = () => {
-  return typeof InstallTrigger !== 'undefined'
-}
-
 const COOKIE_NAME = 'instance-address'
 const URL_REGEX = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/
 
 function msbShareButtonAction(name, target) {
   let msbInstanceAddress = ''
 
-  if (isFirefox()) {
-    let windowId = window.open(`web+mastodon://share?text=${name}%20${target}`, `__blank`)
-    return
-  }
-  else {
-    msbInstanceAddress = msbGetCookie(COOKIE_NAME)
-  }
-
+  msbInstanceAddress = msbGetCookie('instance-address')
   if (msbInstanceAddress.length > 0) {
     window.open(`${msbInstanceAddress}/share?text=${name}%20${target}`, `__blank`)
   }
