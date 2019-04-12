@@ -130,6 +130,7 @@ function msbI18n() {
   let publish = {
     'ar': 'بوّق',
     'bg': 'Раздумай',
+    'cs': 'Tootnout',
     'de': 'Tröt',
     'eo': 'Hué',
     'es': 'Tootear',
