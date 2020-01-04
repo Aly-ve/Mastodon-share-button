@@ -1,5 +1,7 @@
 # Mastodon share button
 
+➡️ For a demo, click [here](https://aly-ve.github.io/Mastodon-share-button/).
+
 As the same way than Facebook or Twitter, this "plugin" allows developers to append a button to share content to Mastodon.
 
 You just need to append `mastodon.js` at the end of your `<body>`.
