@@ -99,7 +99,7 @@
               <input type="text" class="form-control" id="msb-address" placeholder="https://framapiaf.org">
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="msb-memorize-instance">
+              <input type="checkbox" class="form-check-input" id="msb-memorize-instance" autofocus>
               <label class="form-check-label" for="msb-memorize-instance">Memorize my instance</label>
             </div>
           </div>
@@ -115,6 +115,9 @@
     var msbConfig = {
       openModal: function () {
         $('#exampleModal').modal('show');
+        $('#exampleModal').on('shown.bs.modal', function() {
+          $('#msb-address').focus();
+        }); 
       },
       closeModal: function () {
         $('#exampleModal').modal('hide');

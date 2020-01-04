@@ -37,10 +37,15 @@ This variable contains callback to open and close modal and/or dialog, the id of
 
 #### Bootstrap or your own modal
 
+In the example, `addressFieldSelector` is automatically autofocused. In the case of you are using Bootstrap with jQuery (like mine), you must add an event like below.
+
 ```javascript
 var msbConfig = {
   openModal: function () {
     $('#exampleModal').modal('show');
+    $('#exampleModal').on('shown.bs.modal', function() {
+      $('#msb-address').focus();
+    }); 
   },
   closeModal: function () {
     $('#exampleModal').modal('hide');
