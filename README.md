@@ -43,9 +43,6 @@ In the example, `addressFieldSelector` is automatically autofocused. In the case
 var msbConfig = {
   openModal: function () {
     $('#exampleModal').modal('show');
-    $('#exampleModal').on('shown.bs.modal', function() {
-      $('#msb-address').focus();
-    }); 
   },
   closeModal: function () {
     $('#exampleModal').modal('hide');
@@ -55,8 +52,11 @@ var msbConfig = {
   memorizeFieldId: 'msb-memorize-instance',
   buttonDisplayText: false, 
   buttonIconHtml: '<i class="fa fa-mastodon" aria-hidden="true"></i>'
-
 };
+
+$('#exampleModal').on('shown.bs.modal', function() {
+  $('#msb-address').focus();
+});
 ```
 
 #### Alertify.js
