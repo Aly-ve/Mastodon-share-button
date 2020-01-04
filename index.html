@@ -59,32 +59,31 @@
               Bellow this card, you can click on the button. A little modal will be displayed to ask to the user his/her instance.
             </p>
             <p class="card-text">
-              <div 
+              <div
               class="mastodon-share-button"
               data-target="https://aly-ve.github.io/Mastodon-share-button/"
               data-name="Test of #MSB"
               data-buttonstyle="btn btn-primary"
               data-text="Share on Mastodon"
-              ></div>   
+              ></div>
             </p>
           </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <h2>Easy to use</h2>
+        <p>It's so simple than my grandmother is able to add these buttons.<br/>
+        <p>Just include mastodon.js, set the configuration and add your button.</p>
+
+
+        <h2>Keep the liberty</h2>
+        <p>Mastodon Share Button is very customizable. Keep your freedom by customizing the text, the button or adding a button.<br/>
+        It works without any library. No tracker included, just a button.
+
       </div>
     </div>
-    <div class="col-6">
-      <h2>Easy to use</h2>
-      <p>It's so simple than my grandmother is able to add these buttons.<br/>
-      <p>Just include mastodon.js, set the configuration and add your button.</p>
 
-
-      <h2>Keep the liberty</h2>
-      <p>Mastodon Share Button is very customizable. Keep your freedom by customizing the text, the button or adding a button.<br/>
-      It works without any library. No tracker included, just a button.
-
-    </div>
-</div>
-
-    
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -99,7 +98,7 @@
               <input type="text" class="form-control" id="msb-address" placeholder="https://framapiaf.org">
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="msb-memorize-instance" autofocus>
+              <input type="checkbox" class="form-check-input" id="msb-memorize-instance">
               <label class="form-check-label" for="msb-memorize-instance">Memorize my instance</label>
             </div>
           </div>
@@ -110,14 +109,14 @@
         </div>
       </div>
     </div>
+
     <img src="https://framaclic.org/h/129I693AIEb9g" alt="">
+  </div>
+
   <script>
-    var msbConfig = {
+    const msbConfig = {
       openModal: function () {
         $('#exampleModal').modal('show');
-        $('#exampleModal').on('shown.bs.modal', function() {
-          $('#msb-address').focus();
-        }); 
       },
       closeModal: function () {
         $('#exampleModal').modal('hide');
@@ -127,6 +126,10 @@
       memorizeFieldId: 'msb-memorize-instance',
       buttonIconHtml: '<i class="fa fa-mastodon" aria-hidden="true"></i>'
     };
+
+    $('.modal').on('shown.bs.modal', function() {
+      $('#msb-address').focus();
+    });
   </script>
 
   <script src="dist/mastodon.js"></script>
