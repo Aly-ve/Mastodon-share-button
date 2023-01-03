@@ -31,6 +31,9 @@ function msbOnShare(_name, _target) {
     let target = !!_target ? _target : document.querySelector(msbConfig.buttonModalSelector).data.target
     let msbInstanceAddress = document.querySelector(`${msbConfig.addressFieldSelector}`).value
 
+    if (!msbInstanceAddress.startsWith('http')) {
+      msbInstanceAddress = 'https://' + msbInstanceAddress;
+    }
     if (msbInstanceAddress.match(URL_REGEX)) {
       if (msbConfig.memorizeFieldId) {
         let msbMemorizeIsChecked = document.querySelector(`#${msbConfig.memorizeFieldId}`).checked
